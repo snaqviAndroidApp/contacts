@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="colorCustBk">#43d2dcfa</color>
+    <color name="colorMainBk">#43b4c2ed</color>
+    <color name="colorCust1">#ab7171</color>
+    <color name="colorAppBar">#2504f7e7</color>
+    <color name="colornavBk">#fcd9efef</color>
+</resources>

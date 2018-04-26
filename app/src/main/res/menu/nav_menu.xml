@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/navItem_01"
+        android:title="@string/mtext_01"
+        android:icon="@drawable/ic_playlist_add"
+        />
+    <item
+        android:id="@+id/navItem_02"
+        android:title="@string/mtext_02"
+        android:icon="@color/cardview_dark_background"/>
+
+</menu>
