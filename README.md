@@ -1,3 +1,3 @@
-# currnet Weather Branch Implemnted 
+# currnet Weather Branch Implemented 
 
 
