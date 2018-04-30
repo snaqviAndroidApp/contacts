@@ -6,6 +6,10 @@
     <color name="colorCustBk">#43d2dcfa</color>
     <color name="colorMainBk">#43b4c2ed</color>
     <color name="colorCust1">#ab7171</color>
+    <color name="colorCh">#5c6bc0</color>
+    <color name="colorCh2">#49599a</color>
     <color name="colorAppBar">#2504f7e7</color>
     <color name="colornavBk">#fcd9efef</color>
+    <color name="colorLogo">#ffffff</color>
+    <color name="whity">#e7eaef</color>
 </resources>
