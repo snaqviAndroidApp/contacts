@@ -17,26 +17,13 @@
             android:layout_height="match_parent"
             android:backgroundTint="@android:color/transparent">
 
-            <!--<SearchView-->
-            <!--android:id="@+id/searchView"-->
-            <!--android:layout_width="346dp"-->
-            <!--android:layout_height="47dp"-->
-            <!--android:layout_marginLeft="8dp"-->
-            <!--android:layout_marginRight="8dp"-->
-            <!--android:layout_marginTop="16dp"-->
-            <!--android:iconifiedByDefault="false"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toTopOf="parent" />-->
-
             <TextView
-                android:id="@+id/textView2"
+                android:id="@+id/tvfView"
                 android:layout_width="67dp"
                 android:layout_height="67dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
-                android:text="32"
                 android:textAlignment="center"
                 android:textSize="48sp"
                 android:fontFamily="@font/source_sans_pro_extralight"
@@ -46,7 +33,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/textView4"
+                android:id="@+id/tvfViewDesc"
                 android:layout_width="237dp"
                 android:layout_height="21dp"
                 android:layout_marginEnd="8dp"
@@ -54,7 +41,6 @@
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/source_sans_pro_extralight"
                 android:includeFontPadding="false"
-                android:text="Scattered Thunderstorms"
                 android:textAlignment="center"
                 android:textColor="#00227b"
                 android:textSize="20sp"
@@ -70,13 +56,10 @@
                 android:layout_marginEnd="4dp"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/rainy"
                 android:elevation="0dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
-            <!--android:src="@drawable/sunrise"-->
+                app:layout_constraintTop_toBottomOf="@+id/tvfView" />
 
         </android.support.constraint.ConstraintLayout>
     </FrameLayout>

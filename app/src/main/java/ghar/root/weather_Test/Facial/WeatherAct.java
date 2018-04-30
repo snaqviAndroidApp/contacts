@@ -16,6 +16,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.EditText;
+import android.widget.SearchView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONArray;
@@ -43,53 +45,36 @@ public class WeatherAct extends AppCompatActivity implements WeatherOut.OnFragme
     RecyclerView.Adapter rAdapter;
     LinearLayoutManager lLayoutMngr;
     List<ForecastData> forecastMembers = new ArrayList<>();
-    private Menu w_menuT;
+    //private Menu w_menuT;
 
     FragmentTransaction transaction;
     WeatherOut wFrag;
     EditText uInCity;
+    TextView tempV, despV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
-        wFrag = WeatherOut.newInstance("coded_user1", "coded_pass2");
         if (savedInstanceState == null) {
             super.onCreate(savedInstanceState);
             setContentView(R.layout.activity_weather);
-
-            /////////////////////////////
-            transaction = getSupportFragmentManager().beginTransaction();       // Fragment Replacement Approach
-            // Replace whatever is in the fragment_container view with this fragment,
-            // and add the transaction to the back stack so the user can navigate back
-//            transaction.replace(R.id.fragLayout, wFrag);
-//            transaction.commit();                                                                   // Commit the transaction
-
         }
         uInCity = findViewById(R.id.userIn);
-//        myRecyclerView = findViewById(R.id.list_forcast);  //ListView: RecyclerView a Dynamic View Structure
-//        myRecyclerView.hasFixedSize();
-//        lLayoutMngr = new LinearLayoutManager(this);
-//        rAdapter = new RvAdapter(forecastMembers, this); // create Adapter instance
-//        myRecyclerView.setLayoutManager(lLayoutMngr);
-//        useDynamicData();
 
         }
 
     @Override
-//    public void onFragmentInteraction(final Uri uri) {
-    public void onFragmentInteraction() {
-
+    public void onFragmentInteraction(String descIn, int tempIn, String icon_in) {
+        wFrag = WeatherOut.newInstance(descIn, Integer.toString(tempIn), icon_in);
+        transaction = getSupportFragmentManager().beginTransaction();       // Fragment Replacement Approach
         transaction.replace(R.id.fragLayout, wFrag);
         transaction.commit();
+
         myRecyclerView = findViewById(R.id.list_forcast);  //ListView: RecyclerView a Dynamic View Structure
         myRecyclerView.hasFixedSize();
         lLayoutMngr = new LinearLayoutManager(this);
         rAdapter = new RvAdapter(forecastMembers, this); // create Adapter instance
         myRecyclerView.setLayoutManager(lLayoutMngr);
         useDynamicData();
-
     }
 
     public void onImageClick1(View view) {
@@ -98,10 +83,7 @@ public class WeatherAct extends AppCompatActivity implements WeatherOut.OnFragme
         if(!userIn.isEmpty()){
             new HttpAsyncTask().execute("http://api.openweathermap.org/data/2.5/weather?q="+userIn
                     +",US&units=imperial&APPID=7639f37bfc2d082876fa0816e7fad930");
-
-//            Intent wInfo = new Intent(WeatherAct.this,WeatherAct.class);
-//            wInfo.putExtra(userIn,"userIn_w");
-
+            // http://samples.openweathermap.org/data/2.5/forecast?id=524901&appid=b6907d289e10d714a6e88b30761fae22    // FORECAST 05 -DAYS
         }else {
             Snackbar.make(Objects.requireNonNull(getCurrentFocus()), MessageFormat.format("Please enter a city", null)
                     , Snackbar.LENGTH_SHORT).setAction("Action", null).show();
@@ -166,27 +148,25 @@ public class WeatherAct extends AppCompatActivity implements WeatherOut.OnFragme
 //                JSONArray res3 = jsonObj.getJSONArray("wind");
 
                 JSONObject add_compObj = res1.getJSONObject(0);
-
                 String w_desc = add_compObj.getString("description");
-                String w_temp = jsonObj.getJSONObject("main").getString("temp");    //to get the inner key:value
+                String w_icon = add_compObj.getString("icon");
+//                String w_temp = jsonObj.getJSONObject("main").getString("temp");    //to get the inner key:value
+                int w_temp = jsonObj.getJSONObject("main").getInt("temp");    //to get the inner key:value
+
 //                Log.d("addr_str", w_temp + w_desc);
-                Log.d("addr_str", w_temp);
                 Snackbar.make(Objects.requireNonNull(getCurrentFocus()), MessageFormat.format("PostAsync output: {0} and: {1}"
                         , w_temp, w_desc)
                         , Snackbar.LENGTH_SHORT).setAction("Action", null).show();
 
-                String w_code = jsonObj.getJSONObject("sys").getString("code");
-                if(Integer.getInteger(w_code) == 200){
-                    onFragmentInteraction();         //Fragment Instantiation Dynamic
+                int w_code = (jsonObj.getInt("cod"));//.toString();//.getString("cod");
+                Log.d("addr_str", Integer.toString(w_code));
+                if(w_code == 200){
+                    onFragmentInteraction(w_desc,w_temp, w_icon);         //Fragment Instantiation Dynamic
                 }else {
-                    Snackbar.make(Objects.requireNonNull(getCurrentFocus()), MessageFormat.format("Error code: {0}"
+                    Snackbar.make(Objects.requireNonNull(getCurrentFocus()), MessageFormat.format("Please try again, Error code: {0 "
                             , w_code)
                             , Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-
                 }
-
-
-
             }catch (JSONException ej){
                 Log.e("JParse_e", ej.getMessage());
             }

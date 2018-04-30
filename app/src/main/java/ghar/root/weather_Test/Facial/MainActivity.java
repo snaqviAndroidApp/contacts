@@ -22,8 +22,6 @@ import java.net.URL;
 public class MainActivity extends AppCompatActivity {
 
     Intent actWCheck;
-    Intent wLogIn;                        // Invoke Fragment-Activity for Weather-Model/View
-    TextView tvOutput;
 
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
@@ -38,7 +36,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void onWData(View view) {
         actWCheck = new Intent(MainActivity.this, WeatherAct.class);
-//        actWCheck = new Intent(MainActivity.this, WeatherSearch.class);
         startActivity(actWCheck);
     }
 
