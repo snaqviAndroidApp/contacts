@@ -1,4 +1,4 @@
-package ghar.root.recycleAndDrawer;
+package ghar.root.weatherOrg;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

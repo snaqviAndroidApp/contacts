@@ -1,4 +1,4 @@
-package ghar.root.weather_Test.bkEnd;
+package Model;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -10,7 +10,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ghar.root.weather_Test.Facial.R;
+import ghar.root.weatherOrg.R;
+
 
 /**
  * Created by root on 2/7/18.

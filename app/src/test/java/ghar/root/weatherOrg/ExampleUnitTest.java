@@ -1,4 +1,4 @@
-package ghar.root.recycleAndDrawer;
+package ghar.root.weatherOrg;
 
 import org.junit.Test;
 

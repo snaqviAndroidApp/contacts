@@ -2,14 +2,8 @@
     <string name="app_name">weather_Instants</string>
     <string name="deniel_msg">Permission Denied</string>
     <string name="permission_msg">Permission Rendered</string>
-    <!--<string name="bStopText">Stop</string>-->
-    <!--<string name="btextResume">Resume</string>-->
-    <!--<string name="btextStart"> Start</string>-->
-    <!--<string name="btextPause"> Pause</string>-->
-    <!--<string name="mtext_01">Tracks Listing</string>-->
-    <string name="mtext_02">Weather</string>
 
-    <!--<string name="new_message_notification_title_template">New message: %1$s</string>-->
+    <string name="mtext_02">Weather</string>
     <string name="new_message_notification_cust_title">Media note: %1$s</string>
 
     <!-- TODO: remove this placeholder text -->
@@ -29,5 +23,6 @@
     <string name="search_hint">Enter city, state</string>
     <string name="title_act_wSearch">WSearch</string>
     <string name="title_activity_weather_search">weatherSearch</string>
+    <string name="app_about">About</string>
 
 </resources>

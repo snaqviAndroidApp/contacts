@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="ghar.root.weather_Test.Facial.WeatherOut">
+    tools:context="ghar.root.weatherOrg.facial.Views.WeatherfView">
 
     <!-- TODO: Update blank fragment layout -->
     <FrameLayout

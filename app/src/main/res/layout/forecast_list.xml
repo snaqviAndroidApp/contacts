@@ -200,7 +200,6 @@
                     android:layout_marginStart="24dp"
                     android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
-                    android:text="Mon"
                     android:textAlignment="center"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -214,7 +213,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
-                    android:text="Tue"
                     android:textAlignment="center"
                     app:layout_constraintStart_toEndOf="@+id/tvMon"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -228,7 +226,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
-                    android:text="Wed"
                     android:textAlignment="center"
                     app:layout_constraintStart_toEndOf="@+id/tvTue"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -242,7 +239,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
-                    android:text="Thur"
                     android:textAlignment="center"
                     app:layout_constraintStart_toEndOf="@+id/tvWed"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -257,7 +253,6 @@
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
-                    android:text="Fri"
                     android:textAlignment="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toEndOf="@+id/tvThur"

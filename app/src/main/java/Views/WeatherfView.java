@@ -1,12 +1,10 @@
-package ghar.root.weather_Test.Facial;
+package Views;
 
 import android.content.Context;
 import android.graphics.drawable.Icon;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
@@ -14,19 +12,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.Objects;
+
+import ghar.root.weatherOrg.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link WeatherOut.OnFragmentInteractionListener} interface
+ * {@link WeatherfView.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link WeatherOut#newInstance} factory method to
+ * Use the {@link WeatherfView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class WeatherOut extends Fragment {
+public class WeatherfView extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -46,7 +45,7 @@ public class WeatherOut extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public WeatherOut() {
+    public WeatherfView() {
         // Required empty public constructor
     }
 
@@ -59,8 +58,8 @@ public class WeatherOut extends Fragment {
      * @return A new instance of fragment WeatherOut.
      */
     // TODO: Rename and change types and number of parameters
-    public static WeatherOut newInstance(String param1, String param2, String param3) {
-        WeatherOut fragment = new WeatherOut();
+    public static WeatherfView newInstance(String param1, String param2, String param3) {
+        WeatherfView fragment = new WeatherfView();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -88,6 +87,8 @@ public class WeatherOut extends Fragment {
         tempFragV = fView.findViewById(R.id.tvfView);
         despFragV = fView.findViewById(R.id.tvfViewDesc);
         imageV = fView.findViewById(R.id.iW_icon);
+        despFragV.setText(mParam1);
+        tempFragV.setText(mParam2);
         switch (mParam3){                            // Image Display per Weather-description, few implemented
             case "04d":                                                      // Light rain or Cloudy
                 imageV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.cloudy));
@@ -97,11 +98,9 @@ public class WeatherOut extends Fragment {
                 imageV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.rainy));
                 break;
             default:
-                imageV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.sunny));
+                imageV.setImageDrawable(ContextCompat.getDrawable(Objects.requireNonNull(getContext()), R.drawable.sunny));
                 break;
         }
-        despFragV.setText(mParam1);
-        tempFragV.setText(mParam2);
 
         return fView;
     }
@@ -132,7 +131,6 @@ public class WeatherOut extends Fragment {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
 //        void onFragmentInteraction(Uri uri);
-//        void onFragmentInteraction();
         void onFragmentInteraction(String str1 , int tempIn2, String str3);
     }
 }
