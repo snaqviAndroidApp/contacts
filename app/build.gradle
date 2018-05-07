@@ -3,7 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "ghar.root.weatherTest"
+//        applicationId "everyDayWeather.weathering"
+        applicationId "everyDayWeatherTwo"
         //AndroidManifest has package as package="ghar.root.weather_Test.facial"
         minSdkVersion 22
         targetSdkVersion 26

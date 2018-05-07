@@ -1,4 +1,4 @@
-package ghar.root.weatherOrg;
+package geveryDayWeather;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

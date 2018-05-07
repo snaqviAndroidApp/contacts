@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import ghar.root.weatherOrg.R;
+import everyDayWeather.R;
 
 
 /**

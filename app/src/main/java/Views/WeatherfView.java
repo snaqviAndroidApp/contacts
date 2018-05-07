@@ -15,7 +15,8 @@ import android.widget.TextView;
 
 import java.util.Objects;
 
-import ghar.root.weatherOrg.R;
+import everyDayWeather.R;
+
 
 /**
  * A simple {@link Fragment} subclass.

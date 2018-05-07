@@ -27,7 +27,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import ghar.root.weatherOrg.R;
+import everyDayWeather.R;
 import Model.ForecastData;
 import Model.RvAdapter;
 import Model.WeekDays;

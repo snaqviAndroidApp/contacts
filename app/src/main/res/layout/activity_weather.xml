@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/colorCh2"
     android:orientation="vertical"
-    tools:context="ghar.root.weatherOrg.facial.Views.WeatherAct">
+    tools:context="ghar.root.everydayweather.facial.Views.WeatherAct">
 
     <FrameLayout
         android:layout_marginTop="30dp"

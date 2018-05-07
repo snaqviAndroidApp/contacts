@@ -1,4 +1,4 @@
-package ghar.root.weatherOrg;
+package everyDayWeather;
 
 import org.junit.Test;
 
