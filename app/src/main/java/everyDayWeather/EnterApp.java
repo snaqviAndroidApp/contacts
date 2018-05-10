@@ -5,10 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import Views.WeatherAct;
+import everyDayWeather.Views.WeatherAct;
 
 
-public class MainActivity extends AppCompatActivity {
+public class EnterApp extends AppCompatActivity {
 
     Intent actWCheck;
 
@@ -19,12 +19,12 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-            setContentView(R.layout .layout.activity_main);
+            setContentView(R.layout.activity_main);
 
     }
 
     public void onWData(View view) {
-        actWCheck = new Intent(MainActivity.this, WeatherAct.class);
+        actWCheck = new Intent(EnterApp.this, WeatherAct.class);
         startActivity(actWCheck);
     }
 

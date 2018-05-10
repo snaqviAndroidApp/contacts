@@ -18,23 +18,19 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
         <activity
-            android:name=".MainActivity"
+            android:name=".EnterApp"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- ___android:windowSoftInputMode="adjustPan"____ stop EditTextfrom autoScroll -->
+        <!-- ___android:windowSoftInputMode="adjustPan"___ stop EditTextfrom autoScroll -->
 
         <activity
-            android:name="Views.WeatherAct"
+            android:name="everyDayWeather.Views.WeatherAct"
             android:label="@string/title_activity_weather">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.SEARCH" />-->
-            <!--</intent-filter>-->
 
         </activity>
 

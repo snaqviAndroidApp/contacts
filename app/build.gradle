@@ -3,10 +3,10 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-//        applicationId "everyDayWeather.weathering"
-        applicationId "everyDayWeatherTwo"
+        applicationId "everyDayWeather.weathering"
+
         //AndroidManifest has package as package="ghar.root.weather_Test.facial"
-        minSdkVersion 22
+        minSdkVersion 24
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
@@ -23,11 +23,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-//    externalNativeBuild {
-//        cmake {
-//            path "CMakeLists.txt"
-//        }
-//    }
 }
 
 dependencies {

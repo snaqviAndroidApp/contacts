@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">weather_Instants</string>
+    <string name="app_name">weather_Insts</string>
     <string name="deniel_msg">Permission Denied</string>
     <string name="permission_msg">Permission Rendered</string>
 
