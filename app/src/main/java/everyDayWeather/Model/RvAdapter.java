@@ -12,15 +12,8 @@ import java.util.List;
 
 import everyDayWeather.R;
 
-
-/**
- * Created by root on 2/7/18.
- */
-
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
-
     private static final String TAG = "Item position";    // Logging to a file
-
     private List<ForecastData> lforCast;        //BackEnd Java DB Object list
     private Context contextweatherFore;
     public RvAdapter(List<ForecastData> forecastData, Context contextweatherFore) {
@@ -53,17 +46,21 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
 //    public class ViewHolder extends RecyclerView.ViewHolder {
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-
             public TextView tvMon, tvTue, tvWed, tvThu, tvFri;
             List<ForecastData> lAdapterItems;
             Context cntxtDisp;
 
-        public ViewHolder(View itemView, Context cntxt, List<ForecastData> fItemData) {
+    /**
+     * @param itemView
+     * @param cntxt
+     * @param fItemData
+     */
+//        public ViewHolder(View itemView, Context cntxt, List<ForecastData> fItemData) {
+ViewHolder(View itemView, Context cntxt, List<ForecastData> fItemData) {
             super(itemView);
             this.lAdapterItems = fItemData;
             this.cntxtDisp = cntxt;
             itemView.setOnClickListener(this);      //Handle Clicks
-
             tvMon = itemView.findViewById(R.id.tvMon);
             tvTue = itemView.findViewById(R.id.tvTue);
             tvWed = itemView.findViewById(R.id.tvWed);

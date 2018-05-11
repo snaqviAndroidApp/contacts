@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import everyDayWeather.R;
@@ -46,14 +47,11 @@ public class WeatherfView extends Fragment {
     ImageView imageV;
     View fView;
     Icon iconCloudy;
-
-
     private OnFragmentInteractionListener mListener;
 
     public WeatherfView() {
         // Required empty public constructor
     }
-
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -63,18 +61,17 @@ public class WeatherfView extends Fragment {
      * @return A new instance of fragment WeatherOut.
      */
     // TODO: Rename and change types and number of parameters
-    public static WeatherfView newInstance(String param1, String param2, String param3, String param4, String param5) {
+    public static WeatherfView newInstance(String param1, String param2, String param3, ArrayList<String> param4, ArrayList<String> param5) {
         WeatherfView fragment = new WeatherfView();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
         args.putString(ARG_PARAM3, param3);
-        args.putString(ARG_PARAM3, param4);
-        args.putString(ARG_PARAM3, param5);
+        args.putString(ARG_PARAM4, param4.toString());
+        args.putString(ARG_PARAM5, param5.toString());
         fragment.setArguments(args);
         return fragment;
     }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -86,12 +83,12 @@ public class WeatherfView extends Fragment {
             mParam5 = getArguments().getString(ARG_PARAM5);
         }
     }
-
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+    public View onCreateView(LayoutInflater inflater
+            , ViewGroup container
+            , Bundle savedInstanceState)
+    {
         fView = inflater.inflate(R.layout.fragment_weather_out, container, false);
         tempFragV = fView.findViewById(R.id.tvfView);
         despFragV = fView.findViewById(R.id.tvfViewDesc);
@@ -114,12 +111,11 @@ public class WeatherfView extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(String str11, int temp22, String str33, String strf44, String strf55) {
+    public void onButtonPressed(String str11, int temp22, String str33, ArrayList<String> strf44, ArrayList<String> strf55) {
         if (mListener != null) {
             mListener.onFragmentInteraction(str11, temp22, str33, strf44, strf55);
         }
     }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -138,7 +134,6 @@ public class WeatherfView extends Fragment {
     }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-//        void onFragmentInteraction(Uri uri);
-        void onFragmentInteraction(String str1 , int tempIn2, String str3, String str4, String str5);
+        void onFragmentInteraction(String str1 , int tempIn2, String str3, ArrayList<String> arrStr4, ArrayList<String> arrStrArr5);
     }
 }
