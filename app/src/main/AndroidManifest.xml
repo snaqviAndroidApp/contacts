@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="everyDayWeather">
+    package="one">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -19,19 +19,16 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
         <activity
-            android:name=".EnterApp"
+            android:name=".BottlesApp"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!-- ___android:windowSoftInputMode="adjustPan"___ stop EditTextfrom autoScroll -->
-
         <activity
-            android:name="everyDayWeather.Views.WeatherAct"
-            android:label="@string/title_activity_weather">
-
+            android:name=".Views.BottleStore"
+            android:label="@string/title_activity_Bottle">
         </activity>
 
 

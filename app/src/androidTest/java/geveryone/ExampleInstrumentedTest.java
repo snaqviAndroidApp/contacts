@@ -1,4 +1,4 @@
-package geveryDayWeather;
+package geveryone;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getTargetContext();
 
-        assertEquals("ghar.root.recyvapp", appContext.getPackageName());
+        assertEquals("BottleStore.One.recyvapp", appContext.getPackageName());
     }
 }

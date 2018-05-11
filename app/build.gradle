@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 27
     defaultConfig {
-        applicationId "everyDayWeather.weathering"
+        applicationId "BottleStore.Sec"
 
         //AndroidManifest has package as package="ghar.root.weather_Test.facial"
         minSdkVersion 24
