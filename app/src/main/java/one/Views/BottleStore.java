@@ -80,9 +80,12 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
         for(Map.Entry m:exthMapSent.entrySet()){
             for (int i = 0; i < exthMapSent.get(INT_mIndex).length; i++) {
                 fetchedInfo.add(new BottlesD_Data(
-                        exthMapSent.get(INT_mIndex)[hMapCounter]
-                        ,exthMapSent.get(INT_mIndex1)[hMapCounter]
-                        ,exthMapSent.get(INT_mIndex2)[hMapCounter]
+//                        exthMapSent.get(INT_mIndex)[hMapCounter]
+//                        ,exthMapSent.get(INT_mIndex1)[hMapCounter]
+//                        ,exthMapSent.get(INT_mIndex2)[hMapCounter]
+                        exthMapSent.get(INT_mIndex)[i]
+                        ,exthMapSent.get(INT_mIndex1)[i]
+                        ,exthMapSent.get(INT_mIndex2)[i]
                 ));
             }
             hMapCounter++;
