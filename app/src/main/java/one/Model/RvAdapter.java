@@ -2,6 +2,7 @@ package one.Model;
 
 import android.content.Context;
 import android.media.Image;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
@@ -13,6 +14,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -31,12 +34,13 @@ import java.util.Objects;
 import one.R;
 import one.Views.BottleStore;
 
+import static java.lang.System.load;
+
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
-
     private static final String TAG = "Item position";    // Logging to a file
     private List<BottlesD_Data> lforCast;                       //BackEnd Java DB Object list
-    private Context contextweatherFore;
+    Context contextweatherFore;
     public RvAdapter(List<BottlesD_Data> forecastData, Context contextweatherFore) {
         this.lforCast = forecastData;
         this.contextweatherFore = contextweatherFore;
@@ -54,6 +58,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         BottlesD_Data foreData = lforCast.get(position);
         holder.tvAddr.setText(foreData.getDb_Mon());
         holder.tvPh.setText(foreData.getDb_Tue());
+        foreData.setDb_imgUrl(foreData.getDb_imgUrl(),holder.imgView);
     }
 
     @Override
@@ -81,8 +86,6 @@ ViewHolder(View itemView, Context cntxt, List<BottlesD_Data> fItemData) {
             tvAddr = itemView.findViewById(R.id.tvAddr);
             tvPh = itemView.findViewById(R.id.tvPhone);
             imgView = itemView.findViewById(R.id.imgURL);
-            imgView.setImageDrawable(ContextCompat.getDrawable(cntxt, R.drawable.rainy));
-
         }
 
 /**
@@ -98,11 +101,13 @@ ViewHolder(View itemView, Context cntxt, List<BottlesD_Data> fItemData) {
             String vLinkT = lItems.getDb_Tue();
             String iImageRemote = lItems.getDb_imgUrl();
 
-            new ImgHATask().execute(iImageRemote);
 
         Log.d(TAG,String.valueOf(pos));              // Log point for recyView--onClick()-event
         Log.d("rViewAddr",vLink);                // Log point for recyView--onClick()-event
         Log.d("rImgURL",iImageRemote);                // Log point for recyView--onClick()-event
+
+//            new ImgHATask().execute(iImageRemote);
+//        Picasso.with().load(iImageRemote).into(imgView);
     }
 
     }
@@ -119,7 +124,7 @@ class ImgHATask extends AsyncTask<String, String, String> { // AysncTask Started
     }
 
     int countHImg;
-    JSONObject ImgjsonObj = null;
+    JSONObject ImgjsonObj = null, ImgjsonObj1 = null, ImgjsonObj2 = null;
     HttpURLConnection ImgurlConn = null;
 
     @Override
@@ -161,8 +166,9 @@ class ImgHATask extends AsyncTask<String, String, String> { // AysncTask Started
     protected void onProgressUpdate(String... resultIn){
         try {
             ImgjsonObj = null;
-            ImgjsonObj = new JSONObject(resultIn[0]);
-            Log.d("postImgFetch",ImgjsonObj.toString());
+            ImgjsonObj1 = new JSONObject(resultIn[0]);
+//            ImageView imgV = new JSONObject(ImgjsonObj1.);
+            Log.d("postImgFetch","");
 
 //                if(w_code == 200 && w_codef == 200) {
 ////                    assetImg.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.cloudy));

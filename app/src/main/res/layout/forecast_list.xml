@@ -33,17 +33,18 @@
 
                 <ImageView
                     android:id="@+id/imgURL"
-                    android:layout_width="61dp"
-                    android:layout_height="57dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="4dp"
                     android:layout_marginStart="8dp"
                     android:color="#e0f2f1"
                     android:elevation="0dp"
-                    android:src="@drawable/cloudy"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.898"
                     app:layout_constraintStart_toEndOf="@+id/tvAddr"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <!--android:src="@drawable/cloudy"-->
 
                 <TextView
                     android:id="@+id/tvPhone"

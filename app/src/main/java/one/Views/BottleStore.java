@@ -3,7 +3,6 @@ package one.Views;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -80,9 +79,6 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
         for(Map.Entry m:exthMapSent.entrySet()){
             for (int i = 0; i < exthMapSent.get(INT_mIndex).length; i++) {
                 fetchedInfo.add(new BottlesD_Data(
-//                        exthMapSent.get(INT_mIndex)[hMapCounter]
-//                        ,exthMapSent.get(INT_mIndex1)[hMapCounter]
-//                        ,exthMapSent.get(INT_mIndex2)[hMapCounter]
                         exthMapSent.get(INT_mIndex)[i]
                         ,exthMapSent.get(INT_mIndex1)[i]
                         ,exthMapSent.get(INT_mIndex2)[i]
@@ -94,7 +90,6 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
     }
 
     private void onDestroy(final HashMap<Integer, String[]> exthMapforClear) {
-
         exthMapforClear.clear();
         Log.i("HashMap_mem","");
 //        super.onDestroy();
