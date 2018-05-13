@@ -4,91 +4,90 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/colorAppBar"
     android:orientation="vertical"
-    android:paddingRight="15dp">
+    >
 
     <android.support.v7.widget.CardView
         style="@style/Base.CardView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?android:attr/fastScrollPreviewBackgroundLeft"
-        android:padding="35dp"
-        app:cardBackgroundColor="@color/colorAppBar"
-        card_view:cardCornerRadius="4dp"
+        android:layout_height="wrap_content"
+        android:background="@color/colorAppBar"
+        card_view:cardCornerRadius="5dp"
         card_view:cardElevation="12dp">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/colorAppBar"
             android:orientation="vertical">
 
             <android.support.constraint.ConstraintLayout
                 android:id="@+id/MedDaysLayer"
-                android:layout_width="382dp"
-                android:layout_height="557dp"
-                android:layout_margin="5dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginTop="5dp">
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:background="@color/colorCustBk"
+                android:padding="5dp">
 
                 <ImageView
-                    android:id="@+id/imgFri"
-                    android:layout_width="116dp"
-                    android:layout_height="121dp"
+                    android:id="@+id/imgURL"
+                    android:layout_width="61dp"
+                    android:layout_height="57dp"
                     android:layout_marginEnd="4dp"
                     android:layout_marginStart="8dp"
-                    android:layout_marginTop="16dp"
                     android:color="#e0f2f1"
                     android:elevation="0dp"
                     android:src="@drawable/cloudy"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.224"
+                    app:layout_constraintHorizontal_bias="0.898"
                     app:layout_constraintStart_toEndOf="@+id/tvAddr"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvPhone"
-                    android:layout_width="149dp"
-                    android:layout_height="38dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="4dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
                     android:gravity="center_vertical"
                     android:hint="Phone"
                     android:textAppearance="@style/TextAppearance.AppCompat"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.133"
+                    app:layout_constraintHorizontal_bias="0.098"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvAddr" />
 
                 <TextView
                     android:id="@+id/tvView"
                     android:layout_width="88dp"
-                    android:layout_height="28dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="208dp"
+                    android:layout_marginTop="8dp"
                     android:text="Address:"
                     android:textSize="18sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.078"
+                    app:layout_constraintHorizontal_bias="0.088"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
                     android:id="@+id/tvAddr"
-                    android:layout_width="154dp"
-                    android:layout_height="36dp"
+                    android:layout_width="187dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
                     android:layout_marginStart="36dp"
-                    android:layout_marginTop="8dp"
                     android:hint="Adderss Here"
                     android:textAlignment="textStart"
                     android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tvView" />
 

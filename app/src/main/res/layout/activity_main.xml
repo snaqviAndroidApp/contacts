@@ -47,7 +47,7 @@
                 android:color="#e0f2f1"
                 android:elevation="0dp"
                 android:onClick="onWData"
-                android:src="@drawable/tide_logo_1_color_white"
+                android:src="@drawable/ic_business_center_black_24dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.501"
                 app:layout_constraintStart_toStartOf="parent"
