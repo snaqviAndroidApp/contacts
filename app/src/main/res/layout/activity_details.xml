@@ -35,23 +35,24 @@
 
                 <TextView
                     android:id="@+id/tVDetailAddr"
-                    android:layout_width="204dp"
+                    android:layout_width="183dp"
                     android:layout_height="69dp"
-                    android:layout_alignParentTop="true"
-                    android:layout_alignStart="@+id/textView4"
-                    android:layout_marginTop="95dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/tvPhImage"
+                    android:layout_marginBottom="68dp"
                     android:fontFamily="@font/cormorant_garamond_light"
                     android:text="TextView"
                     android:textAllCaps="true"
+                    android:textColor="@color/colorAccent"
                     android:textSize="18sp"
-                    android:textStyle="italic" />
+                    android:textStyle="bold|italic" />
 
                 <TextView
                     android:id="@+id/tVDetailPh"
                     android:layout_width="129dp"
                     android:layout_height="25dp"
                     android:layout_alignParentStart="true"
-                    android:layout_alignTop="@+id/textView4"
+                    android:layout_alignTop="@+id/tvPhImage"
                     android:layout_marginStart="59dp"
                     android:text="TextView"
                     android:textColor="?android:attr/colorPressedHighlight"
@@ -70,13 +71,14 @@
                     android:src="?attr/colorPrimary" />
 
                 <TextView
-                    android:id="@+id/textView4"
+                    android:id="@+id/tvPhImage"
                     android:layout_width="30dp"
                     android:layout_height="25dp"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_marginBottom="28dp"
                     android:layout_marginStart="19dp"
+                    android:onClick="onPhone"
                     android:background="@drawable/ic_local_phone_24dp"
                     tools:layout_editor_absoluteX="25dp" />
             </RelativeLayout>
