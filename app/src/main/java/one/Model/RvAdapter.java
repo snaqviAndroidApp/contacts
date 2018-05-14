@@ -1,10 +1,9 @@
 package one.Model;
 
 import android.content.Context;
-import android.media.Image;
-import android.net.Uri;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.support.design.widget.Snackbar;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,31 +12,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.squareup.picasso.Picasso;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.text.MessageFormat;
 import java.util.List;
-import java.util.Objects;
 
+import one.BottlesApp;
 import one.R;
-import one.Views.BottleStore;
-
-import static java.lang.System.load;
+import one.Views.StoreDetails;
 
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
+
     private static final String TAG = "Item position";    // Logging to a file
     private List<BottlesD_Data> lforCast;                       //BackEnd Java DB Object list
     Context contextweatherFore;
@@ -67,6 +51,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        Bundle bDetails = new Bundle();
             public TextView tvPh, tvAddr;
             ImageView imgView;
             List<one.Model.BottlesD_Data> lAdapterItems;
@@ -90,7 +75,7 @@ ViewHolder(View itemView, Context cntxt, List<BottlesD_Data> fItemData) {
 
 /**
    recyclerView onClick() method provides all available Resources available in that recyclerView Adapter
-   like in this case 03 parameters ID, Name, PhoneNumber
+   like in this case 03 parameters Address, Name, PhoneNumber
 
 **/
     @Override
@@ -98,90 +83,25 @@ ViewHolder(View itemView, Context cntxt, List<BottlesD_Data> fItemData) {
             int pos = getAdapterPosition();                     //get Individual Item-position clicked
             BottlesD_Data lItems = lAdapterItems.get(pos);         //get data-Object from List
             String vLink = lItems.getDb_Mon();
-            String vLinkT = lItems.getDb_Tue();
+            String vPh = lItems.getDb_Tue();
             String iImageRemote = lItems.getDb_imgUrl();
 
+            Log.d(TAG,String.valueOf(pos));              // Log point for recyView--onClick()-event
+            Log.d("rViewAddr",vLink);                // Log point for recyView--onClick()-event
+            Log.d("rViewPh",vPh);                // Log point for recyView--onClick()-event
+            Log.d("rViewURL",iImageRemote);                // Log point for recyView--onClick()-event
 
-        Log.d(TAG,String.valueOf(pos));              // Log point for recyView--onClick()-event
-        Log.d("rViewAddr",vLink);                // Log point for recyView--onClick()-event
-        Log.d("rImgURL",iImageRemote);                // Log point for recyView--onClick()-event
+//        actWCheck = new Intent(BottlesApp.this, BottleStore.class);
+        Intent iActWDetail = new Intent(this.cntextDisp, StoreDetails.class);
+        iActWDetail.putExtra("addrStrr",vLink);
+        iActWDetail.putExtra("phStrr",vPh);
+        iActWDetail.putExtra("imgStrr",iImageRemote);
 
-//            new ImgHATask().execute(iImageRemote);
-//        Picasso.with().load(iImageRemote).into(imgView);
+        Context contextDetail = view.getContext();
+        contextDetail.startActivity(iActWDetail);
     }
-
     }
 
 }
 
-class ImgHATask extends AsyncTask<String, String, String> { // AysncTask Started
 
-    //Image Fetch
-    ImageView imgView;
-
-    public void setImgView(final ImageView imgView) {
-        this.imgView = imgView;
-    }
-
-    int countHImg;
-    JSONObject ImgjsonObj = null, ImgjsonObj1 = null, ImgjsonObj2 = null;
-    HttpURLConnection ImgurlConn = null;
-
-    @Override
-    protected void onPreExecute() {
-        countHImg++;
-    }
-    @Override
-    protected String doInBackground(String... urls) {
-        InputStream inputStream;
-        String result = "";
-        StringBuffer resultBuff = null;
-        try {
-            URL url = new URL(urls[0]);   // New HTTP - Implementation:
-            ImgurlConn = (HttpURLConnection) url.openConnection();
-            ImgurlConn.setConnectTimeout(7000);    //7.0Sec
-            // New HTTP - Implementation--------  ENDS HERE -------------
-
-            // New HTTP data fetching - Implementation--------
-            inputStream = new BufferedInputStream(ImgurlConn.getInputStream());
-            try {
-                BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-                String line = "";
-                while ((line = bufferedReader.readLine()) != null) {
-                    result += line;
-                        Log.d("ImgURL_Proc", "Json coversion Response " + line);
-                }
-                inputStream.close();
-                publishProgress(result);
-            }finally {
-                ImgurlConn.disconnect();              //end connection
-            }
-        }
-        catch (Exception ex) {
-            ex.printStackTrace();
-            Log.e("InputStream", ex.getLocalizedMessage());
-        }
-        return null;
-    }
-    protected void onProgressUpdate(String... resultIn){
-        try {
-            ImgjsonObj = null;
-            ImgjsonObj1 = new JSONObject(resultIn[0]);
-//            ImageView imgV = new JSONObject(ImgjsonObj1.);
-            Log.d("postImgFetch","");
-
-//                if(w_code == 200 && w_codef == 200) {
-////                    assetImg.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.cloudy));
-//                }else {
-//                    Snackbar.make(Objects.requireNonNull(getCurrentFocus())
-//                            , MessageFormat.format("An Error occured, please try again ", null)
-//                            , Snackbar.LENGTH_SHORT).setAction("Action", null).show();
-//                }
-        }
-        catch (JSONException ej){
-            Log.e("JParse_e", ej.getMessage());
-        }
-    }
-    protected void onPostExecute() {
-    }
-}

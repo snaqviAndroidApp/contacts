@@ -18,20 +18,26 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
         <activity
             android:name=".BottlesApp"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".Views.BottleStore"
-            android:label="@string/title_activity_Bottle">
+            android:label="@string/title_activity_Bottle"></activity>
+        <activity android:name=".Views.StoreDetails">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.SENDTO" ></action>-->
+
+            <!--</intent-filter>-->
+
         </activity>
-
-
     </application>
 
 </manifest>
