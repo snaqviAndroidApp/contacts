@@ -12,6 +12,7 @@
 
     <!-- BOOTUP permission for services / BroadCast services to re-activate at BOOTUP like Alarms-Alert -->
     <application
+
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -19,8 +20,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
         <meta-data
-            android:name="preloaded_fonts"
-            android:resource="@array/preloaded_fonts" />
+            android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDUW62iOCMJyZDedyB36b1jUw9aXY88Npw"/>
+        />
+        <!--android:resource="@array/preloaded_fonts"-->
+        <!--android:name="preloaded_fonts"-->
 
         <activity
             android:name=".BottlesApp"

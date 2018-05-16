@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -25,6 +26,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
+
 import one.*;
 
 import one.Model.BottlesD_Data;
@@ -37,6 +39,7 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
     public static final int INT_mIndex = 1;
     public static final int INT_mIndex1 = 2;
     public static final int INT_mIndex2 = 3;
+
     int countHTTP, hMapCounter;
     JSONObject jsonObj = null;
     ImageView assetImg;
@@ -45,8 +48,11 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
     LinearLayoutManager lLayoutMngr;
     List<BottlesD_Data> fetchedInfo = new ArrayList<>();
     HashMap<Integer, String[]> compBData = new HashMap<>();
+
     String[] BServerData_addr;
     String[] BServerData_ph;
+    double[][] Lat_Long;
+    int countLong = 0;
     String[] BServerData_Logo;
     HttpURLConnection urlConnection = null;
 
@@ -69,19 +75,22 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
             new WHttpAsyncTask().execute("http://sandbox.bottlerocketapps.com/BR_Android_CodingExam_2015_Server/stores.json");
         }
     }
+
     @Override
-    public void onFragmentInteraction(HashMap<Integer, String[]> mapExt) {
-        PresentStoreData(mapExt);
+    public void onFragmentInteraction(HashMap<Integer, String[]> mapExt, double[][] rcvdLatLong) {
+        PresentStoreData(mapExt, rcvdLatLong);
         myRecyclerView.setAdapter(rAdapter);
     }
-    private void PresentStoreData(HashMap<Integer, String[]> exthMapSent) {
+
+    private void PresentStoreData(HashMap<Integer, String[]> exthMapSent, double[][] extRcvdLatLong) {
         fetchedInfo.clear();
-        for(Map.Entry m:exthMapSent.entrySet()){
+        for (Map.Entry m : exthMapSent.entrySet()) {
             for (int i = 0; i < exthMapSent.get(INT_mIndex).length; i++) {
                 fetchedInfo.add(new BottlesD_Data(
                         exthMapSent.get(INT_mIndex)[i]
-                        ,exthMapSent.get(INT_mIndex1)[i]
-                        ,exthMapSent.get(INT_mIndex2)[i]
+                        , exthMapSent.get(INT_mIndex1)[i]
+                        , exthMapSent.get(INT_mIndex2)[i]
+                        , extRcvdLatLong[i]
                 ));
             }
             hMapCounter++;
@@ -91,15 +100,20 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
 
     private void onDestroy(final HashMap<Integer, String[]> exthMapforClear) {
         exthMapforClear.clear();
-        Log.i("HashMap_mem","");
+        Log.i("HashMap_mem", "");
 //        super.onDestroy();
     }
 
-    private class WHttpAsyncTask extends AsyncTask<String, String, String> { // AysncTask Started
+    private class WHttpAsyncTask extends AsyncTask<String, String, String> {
+        public static final int longNumber = 2;
+        public static final int longIndex = 1;
+        public static final int latIndex = 0;
+
         @Override
         protected void onPreExecute() {
             countHTTP = 0;
         }
+
         @Override
         protected String doInBackground(String... urls) {
             InputStream inputStream;
@@ -122,51 +136,58 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
                     }
                     inputStream.close();
                     publishProgress(result);
-                }finally {
+                } finally {
                     urlConnection.disconnect();              //end connection
                 }
-            }
-            catch (Exception ex) {
+            } catch (Exception ex) {
                 ex.printStackTrace();
                 Log.e("InputStream", ex.getLocalizedMessage());
             }
             return null;
         }
-        protected void onProgressUpdate(String... resultIn){
+
+        protected void onProgressUpdate(String... resultIn) {
             countHTTP++;
             try {
-                        jsonObj = new JSONObject(resultIn[0]);
-                        Log.d("httpBStore_", jsonObj.toString());
-                        JSONArray res1 = jsonObj.getJSONArray("stores");
-                        JSONObject add_compObj = res1.getJSONObject(0);
-                        BServerData_addr = new String[jsonObj.getJSONArray("stores").length()];
-                        BServerData_ph = new String[jsonObj.getJSONArray("stores").length()];
-                        BServerData_Logo = new String[jsonObj.getJSONArray("stores").length()];
-                        for (int iterbottle = 0; iterbottle < jsonObj.getJSONArray("stores").length(); iterbottle++) {
-                            JSONObject tempJObj  = res1.getJSONObject(iterbottle);
-                            BServerData_addr[iterbottle] = tempJObj.getString("address")
-                                    + " " + add_compObj.getString("city")
-                                    + ", " + add_compObj.getString("state")
-                                    + " " + add_compObj.getString("zipcode");
-                            BServerData_ph[iterbottle]   = tempJObj.getString("phone");
-                            BServerData_Logo[iterbottle] = tempJObj.getString("storeLogoURL");
-                        }
-                        compBData.put(1,BServerData_addr);
-                        compBData.put(2,BServerData_ph);
-                        compBData.put(3,BServerData_Logo);
-
-//                if(w_code == 200 && w_codef == 200){
-                if(BServerData_addr.length != 0){
-                    onFragmentInteraction(compBData);               //Fragment Instantiation Dynamic
-//                    assetImg.setImageDrawable(ContextCompat.getDrawable(getApplicationContext(), R.drawable.cloudy));
+                jsonObj = new JSONObject(resultIn[0]);
+                Log.d("httpBStore_", jsonObj.toString());
+                JSONArray res1 = jsonObj.getJSONArray("stores");
+                JSONObject add_compObj = res1.getJSONObject(0);
+                BServerData_addr = new String[jsonObj.getJSONArray("stores").length()];
+                BServerData_ph = new String[jsonObj.getJSONArray("stores").length()];
+                BServerData_Logo = new String[jsonObj.getJSONArray("stores").length()];
+                Lat_Long = new double
+                        [jsonObj.getJSONArray("stores").length()]
+                        [longNumber];
+                for (int iterbottle = 0; iterbottle < jsonObj.getJSONArray("stores").length(); iterbottle++) {
+                    JSONObject tempJObj = res1.getJSONObject(iterbottle);
+                    BServerData_addr[iterbottle] = tempJObj.getString("address")
+                            + " " + add_compObj.getString("city")
+                            + ", " + add_compObj.getString("state")
+                            + " " + add_compObj.getString("zipcode");
+                    BServerData_ph[iterbottle] = tempJObj.getString("phone");
+                    BServerData_Logo[iterbottle] = tempJObj.getString("storeLogoURL");
+                    Lat_Long[iterbottle][latIndex] = tempJObj.getDouble("latitude");
+                    Lat_Long[iterbottle][longIndex] = tempJObj.getDouble("longitude");
                 }
-                else {
+//                0 = 28.078552
+//                1 = -82.583801
+
+//                0 = 28.078552
+//                1 = -82.583801
+
+                compBData.put(1, BServerData_addr);
+                compBData.put(2, BServerData_ph);
+                compBData.put(3, BServerData_Logo);
+
+                if (BServerData_addr.length != 0) {
+                    onFragmentInteraction(compBData, Lat_Long);                               //Fragment Instantiation Dynamic
+                } else {
                     Snackbar.make(Objects.requireNonNull(getCurrentFocus())
                             , MessageFormat.format("An Error occured, please try again ", null)
-                            , Snackbar.LENGTH_SHORT).setAction("Action", null).show();
+                            , Snackbar.LENGTH_LONG).setAction("Action", null).show();
                 }
-            }
-            catch (JSONException ej){
+            } catch (JSONException ej) {
                 Log.e("JParse_e", ej.getMessage());
             }
         }

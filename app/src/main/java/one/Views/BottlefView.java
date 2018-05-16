@@ -90,9 +90,9 @@ public class BottlefView extends Fragment {
     }
 
     // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(HashMap<Integer, String[]> mapfInst) {
+    public void onButtonPressed(HashMap<Integer, String[]> mapfInst, double[][] inLatLong) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(mapfInst);
+            mListener.onFragmentInteraction(mapfInst, inLatLong);
         }
     }
     @Override
@@ -113,6 +113,7 @@ public class BottlefView extends Fragment {
     }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(HashMap<Integer, String[]> mapf);
+//        void onFragmentInteraction(HashMap<Integer, String[]> mapf);
+        void onFragmentInteraction(HashMap<Integer, String[]> mapf, double[][] LatLong);
     }
 }

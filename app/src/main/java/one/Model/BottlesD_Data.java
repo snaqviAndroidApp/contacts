@@ -10,16 +10,19 @@ import com.squareup.picasso.Picasso;
  */
 
 public class BottlesD_Data {
-
-    WeekDays mWeekDays;              //
     private String db_Mon;
     private String db_Tue;
     private String db_imgUrl;
-    ImageView mImageView;
-    public BottlesD_Data(String Mon_In, String Tue_In, String imgUrl) {
+    private ImageView mImageView;
+    private double[] pojoLat_Long;
+
+
+//    public BottlesD_Data(String Mon_In, String Tue_In, String imgUrl, double[][] setLatLong) {
+    public BottlesD_Data(String Mon_In, String Tue_In, String imgUrl, double[] setLatLong) {
         this.db_Mon = Mon_In;
         this.db_Tue = Tue_In;
         this.db_imgUrl = imgUrl;
+        this.pojoLat_Long = setLatLong;
     }
 
     public String getDb_Mon() {
@@ -29,9 +32,11 @@ public class BottlesD_Data {
         return "Tel: " + db_Tue;
     }
     public String getDb_imgUrl() {return db_imgUrl; }
+    public double[] getPojoLat_Long() { return pojoLat_Long; }
 
-    public void setDb_Mon(String db_Mon) { this.db_Mon = WeekDays.MON.toString(); }
-    public void setDb_Tue(String db_Mon) { this.db_Mon = WeekDays.TUE.toString(); }
+    public void setDb_Mon(String db_Mon) { this.db_Mon = "Dummy_Mon"; }
+    public void setDb_Tue(String db_Mon) { this.db_Mon = "Dummy_Tue"; }
+    public void setPojoLat_Long(final double[] pojoLat_Long) { this.pojoLat_Long = pojoLat_Long; }
     public void setDb_imgUrl(final String db_imgUrl, ImageView imageViewIn) {
         this.mImageView = imageViewIn;
         Picasso.get().load(db_imgUrl).into(this.mImageView);
@@ -41,7 +46,6 @@ public class BottlesD_Data {
     @Override
     public String toString() {
         return "ForecastData{" +
-                "mWeekDays=" + mWeekDays +
                 ", db_Mon='" + db_Mon + '\'' +
                 ", db_Tue='" + db_Tue + '\'' +
                 ", db_imgUrl='" + db_imgUrl + '\'' +

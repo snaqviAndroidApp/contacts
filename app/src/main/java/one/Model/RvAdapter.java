@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -13,7 +14,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import one.BottlesApp;
 import one.R;
@@ -29,6 +32,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         this.lforCast = forecastData;
         this.contextweatherFore = contextweatherFore;
     }
+
     @Override
     public RvAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View vH = LayoutInflater.from(parent.getContext())                          // Attaching backEnd Data to View
@@ -44,14 +48,11 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
         holder.tvPh.setText(foreData.getDb_Tue());
         foreData.setDb_imgUrl(foreData.getDb_imgUrl(),holder.imgView);
     }
-
     @Override
     public int getItemCount() {
         return lforCast.size();            // return the size in the list
     }
-
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        Bundle bDetails = new Bundle();
             public TextView tvPh, tvAddr;
             ImageView imgView;
             List<one.Model.BottlesD_Data> lAdapterItems;
@@ -80,22 +81,25 @@ ViewHolder(View itemView, Context cntxt, List<BottlesD_Data> fItemData) {
 **/
     @Override
         public void onClick(View view) {
-            int pos = getAdapterPosition();                     //get Individual Item-position clicked
-            BottlesD_Data lItems = lAdapterItems.get(pos);         //get data-Object from List
-            String vLink = lItems.getDb_Mon();
-            String vPh = lItems.getDb_Tue();
-            String iImageRemote = lItems.getDb_imgUrl();
+        int pos = getAdapterPosition();                     //get Individual Item-position clicked
+        BottlesD_Data lItems = lAdapterItems.get(pos);         //get data-Object from List
+        String vLink = lItems.getDb_Mon();
+        String vPh = lItems.getDb_Tue();
+        String iImageRemote = lItems.getDb_imgUrl();
 
             Log.d(TAG,String.valueOf(pos));              // Log point for recyView--onClick()-event
             Log.d("rViewAddr",vLink);                // Log point for recyView--onClick()-event
             Log.d("rViewPh",vPh);                // Log point for recyView--onClick()-event
             Log.d("rViewURL",iImageRemote);                // Log point for recyView--onClick()-event
 
-//        actWCheck = new Intent(BottlesApp.this, BottleStore.class);
+        double[] lLatLong = lItems.getPojoLat_Long();
+
         Intent iActWDetail = new Intent(this.cntextDisp, StoreDetails.class);
+        iActWDetail.putExtra("dArrayLatLong",lLatLong);
         iActWDetail.putExtra("addrStrr",vLink);
         iActWDetail.putExtra("phStrr",vPh);
         iActWDetail.putExtra("imgStrr",iImageRemote);
+        iActWDetail.putExtra("dArrayLat_",lLatLong);
 
         Context contextDetail = view.getContext();
         contextDetail.startActivity(iActWDetail);
