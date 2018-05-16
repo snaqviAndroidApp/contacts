@@ -170,11 +170,6 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
                     Lat_Long[iterbottle][latIndex] = tempJObj.getDouble("latitude");
                     Lat_Long[iterbottle][longIndex] = tempJObj.getDouble("longitude");
                 }
-//                0 = 28.078552
-//                1 = -82.583801
-
-//                0 = 28.078552
-//                1 = -82.583801
 
                 compBData.put(1, BServerData_addr);
                 compBData.put(2, BServerData_ph);
