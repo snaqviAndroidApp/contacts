@@ -1,4 +1,4 @@
-#Store App Updates  
+# Store App Updates  
 
 Flow visual / customer flow:
 <p> Left to Right 
