@@ -2,9 +2,11 @@
 
 Flow visual / customer flow:
 
+<p align="right"> 
+<img  src="https://github.com/snaqviAndroidApp/recyclerContacts/blob/master/app/src/main/res/drawable/drawer_n_recyclerview.png" width="350"/> 
 <img
-     src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png"width="250">
-<img/>
+     src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png"width="250" />
+</p>
 
 https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png
 https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png
