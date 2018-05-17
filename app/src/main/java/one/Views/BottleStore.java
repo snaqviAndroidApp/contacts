@@ -93,6 +93,8 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
                         , extRcvdLatLong[i]
                 ));
             }
+            Toast.makeText(getApplicationContext(),MessageFormat.format("used iterator ",m.getValue()),Toast.LENGTH_LONG
+                    ).show();
             hMapCounter++;
         }
         onDestroy(exthMapSent);
