@@ -10,9 +10,11 @@ Features used:
 [repo: https://github.com/snaqviAndroidApp/androidTest1/tree/StoreTwo]
 Android: recyclerView [Android design], Picasso (android), Permission 
 Java: hashMap: [Java Collection], with some MVP, more on MVC, and OOD
-
-
 </P>
+
+<p>       </P>
+<p>       </P>
+<p>       </P>
 <p align="right"> 
 <img src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Launch_Permission.png"width="170" />
 <img src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png"width="170" />
