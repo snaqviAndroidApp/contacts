@@ -3,7 +3,7 @@
 Flow visual / customer flow:
 
 <img
-     src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png">width=250
+     src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png"width=250 >
 <img/>
 
 https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png
