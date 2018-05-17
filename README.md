@@ -1,4 +1,4 @@
-# current-weather Branch Implemented 
+#Store App Updates  
 
 Flow visual / customer flow:
 <p> Left to Right 
