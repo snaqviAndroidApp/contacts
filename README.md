@@ -2,7 +2,7 @@
 
 Flow visual / customer flow:
 
-<p-----------------------------p/>
+<p>-----------------------------<p/>
 https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png
 https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png
 https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/Landing.png
