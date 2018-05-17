@@ -2,23 +2,15 @@ package one.Model;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Parcelable;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
-import one.BottlesApp;
 import one.R;
 import one.Views.StoreDetails;
 
@@ -44,7 +36,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(RvAdapter.ViewHolder holder, int position) {
         BottlesD_Data foreData = lforCast.get(position);
-        holder.tvAddr.setText(foreData.getDb_Mon());
+        holder.tvAddr.setText(foreData.getDb_Addr());
         holder.tvPh.setText(foreData.getDb_Tue());
         foreData.setDb_imgUrl(foreData.getDb_imgUrl(),holder.imgView);
     }
@@ -83,15 +75,9 @@ ViewHolder(View itemView, Context cntxt, List<BottlesD_Data> fItemData) {
         public void onClick(View view) {
         int pos = getAdapterPosition();                     //get Individual Item-position clicked
         BottlesD_Data lItems = lAdapterItems.get(pos);         //get data-Object from List
-        String vLink = lItems.getDb_Mon();
+        String vLink = lItems.getDb_Addr();
         String vPh = lItems.getDb_Tue();
         String iImageRemote = lItems.getDb_imgUrl();
-
-            Log.d(TAG,String.valueOf(pos));              // Log point for recyView--onClick()-event
-            Log.d("rViewAddr",vLink);                // Log point for recyView--onClick()-event
-            Log.d("rViewPh",vPh);                // Log point for recyView--onClick()-event
-            Log.d("rViewURL",iImageRemote);                // Log point for recyView--onClick()-event
-
         double[] lLatLong = lItems.getPojoLat_Long();
 
         Intent iActWDetail = new Intent(this.cntextDisp, StoreDetails.class);

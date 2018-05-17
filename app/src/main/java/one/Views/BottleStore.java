@@ -33,14 +33,15 @@ import one.Model.BottlesD_Data;
 import one.Model.RvAdapter;
 
 import static java.lang.Thread.sleep;
-import static java.security.AccessController.getContext;
 
 public class BottleStore extends AppCompatActivity implements BottlefView.OnFragmentInteractionListener {
+
     public static final int INT_mIndex = 1;
     public static final int INT_mIndex1 = 2;
     public static final int INT_mIndex2 = 3;
+    String[] compDataIndex = null;
 
-    int countHTTP, hMapCounter;
+    int countHTTP;
     JSONObject jsonObj = null;
     ImageView assetImg;
     RecyclerView myRecyclerView;
@@ -49,10 +50,10 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
     List<BottlesD_Data> fetchedInfo = new ArrayList<>();
     HashMap<Integer, String[]> compBData = new HashMap<>();
 
+    String inhVal[][] = null;
     String[] BServerData_addr;
     String[] BServerData_ph;
     double[][] Lat_Long;
-    int countLong = 0;
     String[] BServerData_Logo;
     HttpURLConnection urlConnection = null;
 
@@ -68,7 +69,7 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
             rAdapter = new RvAdapter(fetchedInfo, this);
             myRecyclerView.setLayoutManager(lLayoutMngr);
             try {
-                sleep(100);
+                sleep(32);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -84,26 +85,35 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
 
     private void PresentStoreData(HashMap<Integer, String[]> exthMapSent, double[][] extRcvdLatLong) {
         fetchedInfo.clear();
+        double[][] inhMapLatLong = extRcvdLatLong;
+        inhVal = new String[exthMapSent.size()][];
         for (Map.Entry m : exthMapSent.entrySet()) {
-            for (int i = 0; i < exthMapSent.get(INT_mIndex).length; i++) {
-                fetchedInfo.add(new BottlesD_Data(
-                        exthMapSent.get(INT_mIndex)[i]
-                        , exthMapSent.get(INT_mIndex1)[i]
-                        , exthMapSent.get(INT_mIndex2)[i]
-                        , extRcvdLatLong[i]
-                ));
-            }
-            Toast.makeText(getApplicationContext(),MessageFormat.format("used iterator ",m.getValue()),Toast.LENGTH_LONG
-                    ).show();
-            hMapCounter++;
+            inhVal[Integer.valueOf(m.getKey().toString()) - 1] = (String[]) m.getValue();
+        }
+//        for (int i = 0; i < exthMapSent.get(INT_mIndex).length; i++) {               // No Key:Value Approach; ON need basis
+//            fetchedInfo.add(new BottlesD_Data(
+//                    exthMapSent.getOrDefault(INT_mIndex, compDataIndex)[i]
+//                    ,exthMapSent.getOrDefault(INT_mIndex1, compDataIndex)[i]
+//                    ,exthMapSent.getOrDefault(INT_mIndex2, compDataIndex)[i]
+//                    , extRcvdLatLong[i]
+//            ));
+//        }
+        for (int indexInd = 0; indexInd < inhVal[0].length; indexInd++) {           // Key:Value Approach; Recommended
+            fetchedInfo.add
+                    (new BottlesD_Data
+                            (
+                                    inhVal[0][indexInd]
+                                    , inhVal[1][indexInd]
+                                    , inhVal[2][indexInd]
+                                    , inhMapLatLong[indexInd]
+                            )
+                    );
         }
         onDestroy(exthMapSent);
     }
 
     private void onDestroy(final HashMap<Integer, String[]> exthMapforClear) {
         exthMapforClear.clear();
-        Log.i("HashMap_mem", "");
-//        super.onDestroy();
     }
 
     private class WHttpAsyncTask extends AsyncTask<String, String, String> {
@@ -188,6 +198,7 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
                 Log.e("JParse_e", ej.getMessage());
             }
         }
+
         protected void onPostExecute() {
         }
     }
