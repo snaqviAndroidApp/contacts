@@ -24,7 +24,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
-import one.R;
+import redeploy.R;
+
 
 public class StoreDetails extends AppCompatActivity  implements OnMapReadyCallback {
 

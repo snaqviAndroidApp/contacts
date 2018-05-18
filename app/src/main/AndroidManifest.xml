@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="one">
+    package="redeploy">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
@@ -26,7 +26,7 @@
         <!--android:name="preloaded_fonts"-->
 
         <activity
-            android:name=".BottlesApp"
+            android:name=".views.BottlesApp"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,9 +35,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Views.BottleStore"
+            android:name=".views.BottleStore"
             android:label="@string/title_activity_Bottle"></activity>
-        <activity android:name=".Views.StoreDetails">
+        <activity android:name=".views.StoreDetails">
             <!--<intent-filter>-->
                 <!--<action android:name="android.intent.action.SENDTO" ></action>-->
 

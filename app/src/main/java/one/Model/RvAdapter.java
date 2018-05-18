@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import one.R;
 import one.Views.StoreDetails;
+import redeploy.R;
 
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
