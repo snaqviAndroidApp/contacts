@@ -1,12 +1,9 @@
-package one.Views;
+package redeploy.views;
 
-import android.Manifest;
 import android.app.FragmentTransaction;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.Paint;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,13 +23,11 @@ import com.squareup.picasso.Picasso;
 
 import redeploy.R;
 
-
 public class StoreDetails extends AppCompatActivity  implements OnMapReadyCallback {
 
     Intent iDetailRcv = null;
-    TextView tvAdd, mtvLat, mtvLong, tvPh, detalHeading;
+    TextView tvAdd, tvPh, detalHeading;
     ImageView imgDLogoIn;
-    GoogleMap gMap=null;
     double[] pProcLoc_= null;
 
     @Override

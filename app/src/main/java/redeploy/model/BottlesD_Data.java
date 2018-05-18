@@ -1,4 +1,4 @@
-package one.Model;
+package redeploy.model;
 
 import android.widget.ImageView;
 

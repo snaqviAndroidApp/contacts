@@ -1,4 +1,4 @@
-package one;
+package redeploy;
 
 import org.junit.Test;
 

@@ -1,14 +1,16 @@
-package one.Views;
+
+package redeploy.views;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
+
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -27,13 +29,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import one.*;
-
-import one.Model.BottlesD_Data;
-import one.Model.RvAdapter;
 import redeploy.R;
+import redeploy.model.BottlesD_Data;
+import redeploy.model.RvAdapter;
 
 import static java.lang.Thread.sleep;
+
+
+
 
 public class BottleStore extends AppCompatActivity implements BottlefView.OnFragmentInteractionListener {
 

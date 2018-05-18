@@ -1,7 +1,8 @@
-package one.Model;
+package redeploy.model;
 
 import android.content.Context;
 import android.content.Intent;
+
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +12,9 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import one.Views.StoreDetails;
-import redeploy.R;
 
+import redeploy.R;
+import redeploy.views.StoreDetails;
 
 public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
 
@@ -47,7 +48,7 @@ public class RvAdapter extends RecyclerView.Adapter<RvAdapter.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
             public TextView tvPh, tvAddr;
             ImageView imgView;
-            List<one.Model.BottlesD_Data> lAdapterItems;
+            List<redeploy.model.BottlesD_Data> lAdapterItems;
             Context cntextDisp;
 
     /**
