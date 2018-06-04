@@ -1,2 +1,2 @@
-# contactsCh
+# contacts
 develop Contacts App
