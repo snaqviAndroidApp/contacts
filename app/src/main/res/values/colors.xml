@@ -11,5 +11,9 @@
     <color name="colorAppBar">#795d5d</color>
     <color name="colornavBk">#fcd9efef</color>
     <color name="colorLogo">#ffffff</color>
-    <color name="whity">#d6e3fa</color>
+    <color name="whity">#f4f5f7</color>
+    <color name="constacts_sub">#e0e1e2</color>
+    <color name="textColorPrimary">#442C2E</color>
+    <color name="grey_title_bk">#eaeaea</color>
+    <color name="grey_title">#aba8a8</color>
 </resources>

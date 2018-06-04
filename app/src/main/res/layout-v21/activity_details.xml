@@ -8,7 +8,7 @@
     android:background="@drawable/sunrise"
     android:elevation="4dp"
     android:padding="12dp"
-    tools:context="redeploy.views.StoreDetails">
+    tools:context="solstice.appsback.StoreDetails">
     <!--card_view:layout_constraintCircle="@style/Base.TextAppearance.AppCompat.Display4"-->
 
     <!--android:fontFamily="@font/abhaya_libre"-->

@@ -8,7 +8,7 @@
     android:background="@drawable/sunrise"
     android:elevation="4dp"
     android:padding="12dp"
-    tools:context="one.Views.StoreDetails">
+    tools:context="solstice.appsback.StoreDetails">
     <!--card_view:layout_constraintCircle="@style/Base.TextAppearance.AppCompat.Display4"-->
 
     <TextView
@@ -56,7 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
-                android:background="@drawable/shopping_details">
+                android:background="@drawable/mrect">
 
                 <TextView
                     android:id="@+id/tVDetailAddr"
@@ -103,7 +103,7 @@
                     android:layout_marginTop="13dp"
                     android:color="@color/colornavBk"
                     android:elevation="0dp"
-                    android:src="?attr/colorPrimary" />
+                    />
 
             </RelativeLayout>
         </LinearLayout>

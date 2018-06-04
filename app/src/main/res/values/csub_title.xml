@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="contacts_sub" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+        <item name= "android:layout_width">match_parent</item>
+        <item name= "android:layout_height">wrap_content</item>
+        <item name="android:elevation">5dp</item>
+        <item name="android:layout_centerInParent">true</item>
+        <item name="android:paddingLeft">15dp</item>
+
+        <item name="android:colorPrimary">#f2f0f0</item>
+        <item name="android:colorPrimaryDark">@color/constacts_sub</item>
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+
+    </style>
+</resources>

@@ -1,43 +1,37 @@
-package redeploy.views;
+package solstice.appsback;
 
 import android.content.Context;
-import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import java.net.HttpURLConnection;
 import java.util.HashMap;
 
-import redeploy.R;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link BottlefView.OnFragmentInteractionListener} interface
+ * {@link ContactsFragView.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link BottlefView#newInstance} factory method to
+ * Use the {@link ContactsFragView#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class BottlefView extends Fragment {
+public class ContactsFragView extends Fragment {
 
     HttpURLConnection urlIconConnect = null;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM4 = "param4";
-    private static final String ARG_PARAM5 = "param5";
 
     // TODO: Rename and change types of parameters
     private HashMap<Integer, String[]> mParam4;
-    private String mParam5;
+//    private String mParam5;
     View fView;
     private OnFragmentInteractionListener mListener;
 
-    public BottlefView() {
+    public ContactsFragView() {
         // Required empty public constructor
     }
     /**
@@ -49,9 +43,8 @@ public class BottlefView extends Fragment {
      * @return A new instance of fragment WeatherOut.
      */
     // TODO: Rename and change types and number of parameters
-    public static BottlefView newInstance(HashMap<Integer, String[]> param4) {
-
-        BottlefView fragment = new BottlefView();
+    public static ContactsFragView newInstance(HashMap<Integer, String[]> param4) {
+        ContactsFragView fragment = new ContactsFragView();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM4, param4.toString());
         fragment.setArguments(args);
@@ -64,16 +57,15 @@ public class BottlefView extends Fragment {
             mParam4 = (HashMap<Integer, String[]>) getArguments().get(ARG_PARAM4);
         }
     }
-    @RequiresApi(api = Build.VERSION_CODES.M)
-    @Override
-    public View onCreateView(LayoutInflater inflater
-            , ViewGroup container
-            , Bundle savedInstanceState)
-    {
-        fView = inflater.inflate(R.layout.fragment_weather_out, container, false);
-//                imageV.setImageDrawable(ContextCompat.getDrawable(getContext(), R.drawable.cloudy));
-        return fView;
-    }
+//    @RequiresApi(api = Build.VERSION_CODES.M)
+//    @Override
+//    public View onCreateView(LayoutInflater inflater
+//            , ViewGroup container
+//            , Bundle savedInstanceState)
+//    {
+//        //fView = inflater.inflate(R.layout.fragment_weather_out, container, false);
+//        return fView;
+//    }
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(HashMap<Integer, String[]> mapfInst, double[][] inLatLong) {
@@ -99,7 +91,6 @@ public class BottlefView extends Fragment {
     }
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-//        void onFragmentInteraction(HashMap<Integer, String[]> mapf);
         void onFragmentInteraction(HashMap<Integer, String[]> mapf, double[][] LatLong);
     }
 }

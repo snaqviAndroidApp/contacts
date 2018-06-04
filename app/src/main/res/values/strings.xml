@@ -1,15 +1,9 @@
 <resources>
-    <string name="app_name">BottleVerOne</string>
+    <string name="app_name">Contacts</string>
     <string name="deniel_msg">Permission Denied</string>
     <string name="permission_msg">Permission Rendered</string>
-
     <string name="mtext_02">Weather</string>
     <string name="new_message_notification_cust_title">Media note: %1$s</string>
-
-    <!-- TODO: remove this placeholder text -->
-    <!--<string name="new_message_notification_placeholder_text_template">You said %1$s and lorem ipsum-->
-    <!--dolor sit amet, consectetur adipiscing elit. Etiam non enim magna. Morbi dictum, velit vel-->
-    <!--...-->
 
     <string name="action_share">Share</string>
 

@@ -1,4 +1,6 @@
-package redeploy.views;
+package solstice.appsback;
+
+//import android.app.FragmentTransaction;
 
 import android.app.FragmentTransaction;
 import android.content.Intent;
@@ -21,7 +23,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.squareup.picasso.Picasso;
 
-import redeploy.R;
+import challenge.solstice.myapp.R;
+
 
 public class StoreDetails extends AppCompatActivity  implements OnMapReadyCallback {
 
@@ -29,6 +32,7 @@ public class StoreDetails extends AppCompatActivity  implements OnMapReadyCallba
     TextView tvAdd, tvPh, detalHeading;
     ImageView imgDLogoIn;
     double[] pProcLoc_= null;
+    android.support.v4.app.FragmentTransaction ft = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +63,7 @@ public class StoreDetails extends AppCompatActivity  implements OnMapReadyCallba
                 getFragmentManager().beginTransaction();
         fragmentTransaction.add(R.id.mapCandidate, mMapFragment);
         fragmentTransaction.commit();
+
         mMapFragment.getMapAsync(this);
         //////////////////////////////////////////////////
     }

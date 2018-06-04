@@ -1,18 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="redeploy">
+    package="challenge.solstice.myapp">
 
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-
     <!-- BOOTUP permission for services / BroadCast services to re-activate at BOOTUP like Alarms-Alert -->
     <application
-
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -22,26 +19,20 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDUW62iOCMJyZDedyB36b1jUw9aXY88Npw"/>
         />
-        <!--android:resource="@array/preloaded_fonts"-->
-        <!--android:name="preloaded_fonts"-->
 
         <activity
-            android:name=".views.BottlesApp"
+            android:name="solstice.appsback.ContactsApp"
             android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".views.BottleStore"
+            android:name="solstice.appsback.ContactsFetch"
             android:label="@string/title_activity_Bottle"></activity>
-        <activity android:name=".views.StoreDetails">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.SENDTO" ></action>-->
-
-            <!--</intent-filter>-->
+        <activity
+            android:name="solstice.appsback.StoreDetails">
 
         </activity>
     </application>

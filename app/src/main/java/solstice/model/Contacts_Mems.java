@@ -1,4 +1,4 @@
-package redeploy.model;
+package solstice.model;
 
 import android.widget.ImageView;
 
@@ -8,14 +8,14 @@ import com.squareup.picasso.Picasso;
  * Created by root on 2/7/18.
  */
 
-public class BottlesD_Data {
+public class Contacts_Mems {
     private String db_Addr;
     private String db_Tue;
     private String db_imgUrl;
     private ImageView mImageView;
     private double[] pojoLat_Long;
 
-    public BottlesD_Data(String Mon_In, String Tue_In, String imgUrl, double[] setLatLong) {
+    public Contacts_Mems(String Mon_In, String Tue_In, String imgUrl, double[] setLatLong) {
         this.db_Addr = Mon_In;
         this.db_Tue = Tue_In;
         this.db_imgUrl = imgUrl;

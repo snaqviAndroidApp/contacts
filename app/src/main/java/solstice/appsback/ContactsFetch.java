@@ -1,5 +1,5 @@
 
-package redeploy.views;
+package solstice.appsback;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -29,45 +29,49 @@ import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
-import redeploy.R;
-import redeploy.model.BottlesD_Data;
-import redeploy.model.RvAdapter;
-
+import challenge.solstice.myapp.R;
+import solstice.DAO.RvAdapter;
+import solstice.model.Contacts_Mems;
 import static java.lang.Thread.sleep;
 
-
-
-
-public class BottleStore extends AppCompatActivity implements BottlefView.OnFragmentInteractionListener {
+public class ContactsFetch extends AppCompatActivity implements
+        ContactsFragView.OnFragmentInteractionListener {
 
     public static final int INT_mIndex = 1;
     public static final int INT_mIndex1 = 2;
     public static final int INT_mIndex2 = 3;
     String[] compDataIndex = null;
-
     int countHTTP;
-    JSONObject jsonObj = null;
+    HttpURLConnection urlConnection = null;
+
     ImageView assetImg;
     RecyclerView myRecyclerView;
     RecyclerView.Adapter rAdapter;
     LinearLayoutManager lLayoutMngr;
-    List<BottlesD_Data> fetchedInfo = new ArrayList<>();
+    List<Contacts_Mems> fetchedInfo = new ArrayList<>();
     HashMap<Integer, String[]> compBData = new HashMap<>();
-
     String inhVal[][] = null;
-    String[] BServerData_addr;
-    String[] BServerData_ph;
+
+//    JSON-data Extraction
+    JSONObject jsonObj = null;
+
+    JSONArray jArrayRcvd = null;
+    String[][] jsonInData;
+    String[] contacts_addr;
+    String[][] contacts_ph;
     double[][] Lat_Long;
-    String[] BServerData_Logo;
-    HttpURLConnection urlConnection = null;
+    String[] smallImageURL;
+    String[] largeImageURL;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         if (savedInstanceState == null) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_bottle);
+            setContentView(R.layout.activity_contlists);
             assetImg = findViewById(R.id.imgURL);
-            myRecyclerView = findViewById(R.id.list_forcast);                   //Dynamic ListView: RecyclerView
+            myRecyclerView = findViewById(R.id._mainContacts);                   //Dynamic ListView: RecyclerView
             myRecyclerView.hasFixedSize();
             lLayoutMngr = new LinearLayoutManager(this);
             rAdapter = new RvAdapter(fetchedInfo, this);
@@ -77,7 +81,8 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            new WHttpAsyncTask().execute("http://sandbox.bottlerocketapps.com/BR_Android_CodingExam_2015_Server/stores.json");
+//            new WHttpAsyncTask().execute("http://sandbox.bottlerocketapps.com/BR_Android_CodingExam_2015_Server/stores.json");
+            new WHttpAsyncTask().execute("https://s3.amazonaws.com/technical-challenge/v3/contacts.json");
         }
     }
 
@@ -86,25 +91,17 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
         PresentStoreData(mapExt, rcvdLatLong);
         myRecyclerView.setAdapter(rAdapter);
     }
-
     private void PresentStoreData(HashMap<Integer, String[]> exthMapSent, double[][] extRcvdLatLong) {
         fetchedInfo.clear();
         double[][] inhMapLatLong = extRcvdLatLong;
-        inhVal = new String[exthMapSent.size()][];
+//        inhVal = new String[exthMapSent.size()][];
+        for (String[] strings : inhVal = new String[exthMapSent.size()][]) {}
         for (Map.Entry m : exthMapSent.entrySet()) {
             inhVal[Integer.valueOf(m.getKey().toString()) - 1] = (String[]) m.getValue();
         }
-//        for (int i = 0; i < exthMapSent.get(INT_mIndex).length; i++) {               // No Key:Value Approach; ON need basis
-//            fetchedInfo.add(new BottlesD_Data(
-//                    exthMapSent.getOrDefault(INT_mIndex, compDataIndex)[i]
-//                    ,exthMapSent.getOrDefault(INT_mIndex1, compDataIndex)[i]
-//                    ,exthMapSent.getOrDefault(INT_mIndex2, compDataIndex)[i]
-//                    , extRcvdLatLong[i]
-//            ));
-//        }
         for (int indexInd = 0; indexInd < inhVal[0].length; indexInd++) {           // Key:Value Approach; Recommended
             fetchedInfo.add
-                    (new BottlesD_Data
+                    (new Contacts_Mems
                             (
                                     inhVal[0][indexInd]
                                     , inhVal[1][indexInd]
@@ -148,7 +145,7 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
                     String line = "";
                     while ((line = bufferedReader.readLine()) != null) {
                         result += line;
-                        Log.d("Debug", "Json coversion Response " + line);
+                        Log.d("allContacts", "Json-Data Rcvd" + line);
                     }
                     inputStream.close();
                     publishProgress(result);
@@ -165,33 +162,44 @@ public class BottleStore extends AppCompatActivity implements BottlefView.OnFrag
         protected void onProgressUpdate(String... resultIn) {
             countHTTP++;
             try {
-                jsonObj = new JSONObject(resultIn[0]);
-                Log.d("httpBStore_", jsonObj.toString());
-                JSONArray res1 = jsonObj.getJSONArray("stores");
-                JSONObject add_compObj = res1.getJSONObject(0);
-                BServerData_addr = new String[jsonObj.getJSONArray("stores").length()];
-                BServerData_ph = new String[jsonObj.getJSONArray("stores").length()];
-                BServerData_Logo = new String[jsonObj.getJSONArray("stores").length()];
-                Lat_Long = new double
-                        [jsonObj.getJSONArray("stores").length()]
-                        [longNumber];
-                for (int iterbottle = 0; iterbottle < jsonObj.getJSONArray("stores").length(); iterbottle++) {
-                    JSONObject tempJObj = res1.getJSONObject(iterbottle);
-                    BServerData_addr[iterbottle] = tempJObj.getString("address")
-                            + " " + add_compObj.getString("city")
-                            + ", " + add_compObj.getString("state")
-                            + " " + add_compObj.getString("zipcode");
-                    BServerData_ph[iterbottle] = tempJObj.getString("phone");
-                    BServerData_Logo[iterbottle] = tempJObj.getString("storeLogoURL");
-                    Lat_Long[iterbottle][latIndex] = tempJObj.getDouble("latitude");
-                    Lat_Long[iterbottle][longIndex] = tempJObj.getDouble("longitude");
+
+                jArrayRcvd = new JSONArray(resultIn[0]);
+                Log.d("post_jArray", jArrayRcvd.toString());
+
+//                JSONArray res1 = jsonObj.getJSONArray("stores");
+//                JSONObject add_compObj = res1.getJSONObject(0);
+
+                jsonInData = new String[jArrayRcvd.length()][];
+                contacts_addr = new String[jsonInData.length];
+                smallImageURL = new String[jsonInData.length];
+                largeImageURL = new String[jsonInData.length];
+                contacts_ph = new String[jArrayRcvd.length()][];
+
+//                Lat_Long = new double[jsonObj.getJSONArray("stores").length()][longNumber];
+
+                for (int iterbottle = 0; iterbottle < jsonInData.length; iterbottle++) {
+                    JSONObject tempJObj = jArrayRcvd.getJSONObject(iterbottle);
+                    contacts_addr[iterbottle] = tempJObj.getJSONObject("address").getString("street")
+                            + " " + tempJObj.getJSONObject("address").getString("city")
+                            + ", " + tempJObj.getJSONObject("address").getString("state")
+                            + " " + tempJObj.getJSONObject("address").getString("zipCode")
+                            + ", " + tempJObj.getJSONObject("address").getString("country");
+                    smallImageURL[iterbottle] = tempJObj.getString("smallImageURL");
+                    largeImageURL[iterbottle] = tempJObj.getString("largeImageURL");
+
+                    contacts_ph[iterbottle][0] = tempJObj.getJSONObject("phone").getString("work");
+                    contacts_ph[iterbottle][1] = tempJObj.getJSONObject("phone").getString("home");
+                    contacts_ph[iterbottle][2] = tempJObj.getJSONObject("phone").getString("mobile");
+
+//                    Lat_Long[iterbottle][latIndex] = tempJObj.getDouble("latitude");
+//                    Lat_Long[iterbottle][longIndex] = tempJObj.getDouble("longitude");
                 }
 
-                compBData.put(1, BServerData_addr);
-                compBData.put(2, BServerData_ph);
-                compBData.put(3, BServerData_Logo);
+//                compBData.put(1, contacts_addr);
+//                compBData.put(2, contacts_ph);
+//                compBData.put(3, smallImageURL);
 
-                if (BServerData_addr.length != 0) {
+                if (contacts_addr.length != 0) {
                     onFragmentInteraction(compBData, Lat_Long);                               //Fragment Instantiation Dynamic
                 } else {
                     Snackbar.make(Objects.requireNonNull(getCurrentFocus())

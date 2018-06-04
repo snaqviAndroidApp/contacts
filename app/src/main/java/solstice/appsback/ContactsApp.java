@@ -1,4 +1,4 @@
-package redeploy.views;
+package solstice.appsback;
 
 import android.Manifest;
 import android.content.Intent;
@@ -11,10 +11,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import redeploy.R;
+import challenge.solstice.myapp.R;
 
-
-public class BottlesApp extends AppCompatActivity {
+public class ContactsApp extends AppCompatActivity {
 
     final private int REQUEST_CODE_ASK_PERMISSIONS = 123;        // Call
     final String CALL_PERMISSION = "Calls ";
@@ -36,7 +35,7 @@ public class BottlesApp extends AppCompatActivity {
     }
 
     public void onWData(View view) {
-        actWCheck = new Intent(BottlesApp.this, BottleStore.class);
+        actWCheck = new Intent(ContactsApp.this, ContactsFetch.class);
         startActivity(actWCheck);
     }
         void CheckUserPermissions() {
