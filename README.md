@@ -3,10 +3,10 @@
 <p> Flow: Left to Right </p>
 
 <b>Theme: </b>
-user receives at the opening, the list of shoppping malls [screen: 03], and upon clicking gets details [screen 04] and associated mapView, phone number, then can make a call by clicking on the phone button left of number displayed [screen 05 on right]
+user receives at the opening, the list of contacts and displays them as two categories, Favorite, and 'other'
 
 Features used: Android: recyclerView [Android design], Picasso (android), Permissions 
-Java: hashMap: [Java Collection], with some MVP, more on MVC, and OOD
+Java: hashMap: [Java Collection], OOD is being implemented, still in  the way
 
 </P>
 <p> 
