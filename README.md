@@ -13,11 +13,8 @@ Java: hashMap: [Java Collection], with some MVP, more on MVC, and OOD
 
 </P>
 <p align="right">  
-<img src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/permission.png"width="170" />
-<img src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/landing.png"width="170" />
-<img src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/list.png"width="170" />
-<img src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/detailed.png"width="170" />
-<img src="https://github.com/snaqviAndroidApp/androidTest1/blob/StoreTwo/app/src/main/res/drawable/native_dialer.png"width="170" />
+<img src="" />
+
 </p>
 </P>
 
