@@ -177,25 +177,25 @@ public class ContactsFetch extends AppCompatActivity implements
 
 //                Lat_Long = new double[jsonObj.getJSONArray("stores").length()][longNumber];
 
-                for (int iterbottle = 0; iterbottle < jsonInData.length; iterbottle++) {
-                    JSONObject tempJObj = jArrayRcvd.getJSONObject(iterbottle);
-                    contacts_addr[iterbottle] = tempJObj.getJSONObject("address").getString("street")
+                for (int iterContacts = 0; iterContacts < jsonInData.length; iterContacts++) {
+                    JSONObject tempJObj = jArrayRcvd.getJSONObject(iterContacts);
+                    contacts_addr[iterContacts] = tempJObj.getJSONObject("address").getString("street")
                             + " " + tempJObj.getJSONObject("address").getString("city")
                             + ", " + tempJObj.getJSONObject("address").getString("state")
                             + " " + tempJObj.getJSONObject("address").getString("zipCode")
                             + ", " + tempJObj.getJSONObject("address").getString("country");
-                    smallImageURL[iterbottle] = tempJObj.getString("smallImageURL");
-                    largeImageURL[iterbottle] = tempJObj.getString("largeImageURL");
+                    smallImageURL[iterContacts] = tempJObj.getString("smallImageURL");
+                    largeImageURL[iterContacts] = tempJObj.getString("largeImageURL");
 
-                    contacts_ph[iterbottle][0] = tempJObj.getJSONObject("phone").getString("work");
-                    contacts_ph[iterbottle][1] = tempJObj.getJSONObject("phone").getString("home");
-                    contacts_ph[iterbottle][2] = tempJObj.getJSONObject("phone").getString("mobile");
+                    contacts_ph[iterContacts][0] = tempJObj.getJSONObject("phone").getString("work");
+                    contacts_ph[iterContacts][1] = tempJObj.getJSONObject("phone").getString("home");
+                    contacts_ph[iterContacts][2] = tempJObj.getJSONObject("phone").getString("mobile");
 
 //                    Lat_Long[iterbottle][latIndex] = tempJObj.getDouble("latitude");
 //                    Lat_Long[iterbottle][longIndex] = tempJObj.getDouble("longitude");
                 }
 
-//                compBData.put(1, contacts_addr);
+                compBData.put(1, contacts_addr);
 //                compBData.put(2, contacts_ph);
 //                compBData.put(3, smallImageURL);
 
